@@ -1,11 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Anime JS</title>
-</head>
-<body>
-    sdf
-</body>
+  </head>
+  <body>
+    <div style="min-height: 100%">
+      <div
+        class="box"
+        style="width: 100px; height: 100px; background-color: red"
+      ></div>
+      <div>
+        <div
+          class="follow"
+          style="width: 10px; height: 10px; background-color: red"
+        ></div>
+        <svg>
+          <path
+            class="aa"
+            fill="none"
+            stroke="#000"
+            stroke-width="1"
+            d="M287.5 54.5C276.3 -42.7 91.8333 14 1 54.5C17.5 80.8333 66.3 142.7 129.5 179.5C208.5 225.5 301.5 176 287.5 54.5Z"
+          ></path>
+        </svg>
+      </div>
+    </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
+      integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q=="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      anime({
+        targets: ".box",
+        translateX: 250,
+        direction: "alternate",
+        loop: false,
+        easing: "spring(1, 80, 10, 0)",
+      });
+
+      let path = anime.path(".aa");
+
+      anime({
+        targets: ".follow",
+        translateX: path("x"),
+        translateY: path("y"),
+        rotate: path("angle"),
+        easing: "linear",
+        duration: 5000,
+        loop: true,
+      });
+    </script>
+  </body>
 </html>
